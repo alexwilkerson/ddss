@@ -3,17 +3,24 @@
 import os
 import sys
 import shutil
+import json
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog
 
+app_dir = os.path.dirname(os.path.abspath(__file__))
+
+with open(os.path.join(app_dir, 'config.json'), 'r') as f:
+    config = json.load(f)
 
 # change this if your path differs
 if sys.platform == 'win32':
     default_path = 'C:\Program Files (x86)\Steam\steamapps\common\devildaggers\dd'
 elif sys.platform == 'darwin':
     default_path = os.path.expanduser('~/Library/Application Support/Steam/steamapps/common/devildaggers/Devil Daggers.app/Contents/Resources/dd')
-current_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spawnsets")
-spawnsets = os.listdir(current_path)
+
+spawnset_dir = os.path.join(app_dir, "spawnsets")
+spawnsets = os.listdir(spawnset_dir)
 spawnsets = sorted(spawnsets)
 
 
@@ -31,7 +38,7 @@ combobox.config(state="readonly", values=spawnsets)
 
 def switchset():
     os.remove(os.path.join(default_path, 'survival'))
-    shutil.copy(os.path.join(current_path, combobox.get()), os.path.join(default_path, 'survival'))
+    shutil.copy(os.path.join(spawnset_dir, combobox.get()), os.path.join(default_path, 'survival'))
 
 
 button = Button(root, text='switch!', command=switchset)
