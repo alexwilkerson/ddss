@@ -6,6 +6,7 @@ from tkinter import *
 from tkinter import ttk
 
 
+# change this if your path differs
 default_path = os.path.expanduser('~/Library/Application Support/Steam/steamapps/common/devildaggers/Devil Daggers.app/Contents/Resources/dd')
 current_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spawnsets")
 spawnsets = os.listdir(current_path)
