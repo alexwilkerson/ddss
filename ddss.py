@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import shutil
 from tkinter import *
 from tkinter import ttk
 
 
 # change this if your path differs
-default_path = os.path.expanduser('~/Library/Application Support/Steam/steamapps/common/devildaggers/Devil Daggers.app/Contents/Resources/dd')
+if sys.platform == 'win32':
+    default_path = 'C:\Program Files (x86)\Steam\steamapps\common\devildaggers\dd'
+elif sys.platform == 'darwin':
+    default_path = os.path.expanduser('~/Library/Application Support/Steam/steamapps/common/devildaggers/Devil Daggers.app/Contents/Resources/dd')
 current_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spawnsets")
 spawnsets = os.listdir(current_path)
 spawnsets = sorted(spawnsets)
