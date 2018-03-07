@@ -53,6 +53,7 @@ def set_default():
     messagebox.showinfo("Success!", "'default' spawnset selected.")
 
 def set_dd_location():
+    dirname = default_path
     dirname = filedialog.askdirectory(parent=root, initialdir="/", title='Please select a directory')
     config['dd_location'] = dirname
     with open(os.path.join(app_dir, 'config.json'), 'w') as f:
