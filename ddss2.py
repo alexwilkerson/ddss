@@ -32,13 +32,14 @@ spawnsets = sorted(spawnsets)
 
 root = Tk()
 root.title('Devil Daggers Spawnset Selector')
-root.minsize(275, 90)
-root.geometry('275x90')
+root.minsize(500, 150)
+root.geometry('500x150')
 
 spawnset = StringVar()
 combobox = ttk.Combobox(root, textvariable=spawnset, width=27)
 combobox.set(spawnsets[0])
-combobox.grid(columnspan=2, padx=5)
+# combobox.place(x=40, y=10)
+combobox.pack(padx=5, pady=5, side=TOP)
 combobox.config(state="readonly", values=spawnsets)
 
 def switchset():
@@ -60,13 +61,17 @@ def set_dd_location():
         messagebox.showinfo("Success!", "dd location set to " + dirname)
 
 btn_switch = Button(root, text='switch!', command=switchset)
-btn_switch.grid(row=1, padx=5)
+# button.place(x=310, y=10)
+btn_switch.pack(padx=5, pady=5, side=TOP)
 
 btn_default = Button(root, text='default', command=set_default)
-btn_default.grid(row=1, column=1, padx=5)
+# button.place(x=310, y=10)
+btn_default.pack(padx=5, pady=5, side=TOP)
 
 btn_set_dd = Button(root, text='change dd location', command=set_dd_location)
-btn_set_dd.grid(row=2, columnspan=2, padx=5)
+# button.place(x=310, y=10)
+btn_set_dd.pack(padx=5, pady=5, side=TOP)
 
+# root.iconbitmap(os.path.join(app_dir, 'ddss.ico'))
 root.iconbitmap('ddss.ico')
 root.mainloop()
