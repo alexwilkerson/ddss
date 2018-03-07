@@ -53,12 +53,12 @@ def set_default():
     messagebox.showinfo("Success!", "'default' spawnset selected.")
 
 def set_dd_location():
-    dirname = default_path
     dirname = filedialog.askdirectory(parent=root, initialdir="/", title='Please select a directory')
-    config['dd_location'] = dirname
-    with open(os.path.join(app_dir, 'config.json'), 'w') as f:
-         json.dump(config, f)
-    messagebox.showinfo("Success!", "dd location set to " + dirname)
+    if dirname:
+        config['dd_location'] = dirname
+        with open(os.path.join(app_dir, 'config.json'), 'w') as f:
+             json.dump(config, f)
+        messagebox.showinfo("Success!", "dd location set to " + dirname)
 
 btn_switch = Button(root, text='switch!', command=switchset)
 # button.place(x=310, y=10)
