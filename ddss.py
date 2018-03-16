@@ -108,5 +108,4 @@ if need_update():
 lbl_update = Label(root, text=update_label_text)
 lbl_update.grid(row=4, columnspan=2, padx=5)
 
-root.iconbitmap('ddss.ico')
 root.mainloop()
